@@ -12,11 +12,8 @@ This plugin gathers the following statistics from a VoltDB instance
 
 ```toml
 [[inputs.voltdb]]
-  ## Specify hostnames of VoltDB nodes (physical/virtual/container) using a comma-separated string of hostnames
-  hosts="voltdb-1,voltdb-2,voltdb-3"
-  
-  ## Specify the port that VoltDB listens on for calls using its wire protocol
-  port=21212
+  ## Specify comma-separated connection strings
+  hosts="voltdb://admin:admin@voltdb-1:21212,voltdb-2:21212,voltdb-3"
   
   ## Specify the procedure to be called
   proc=@Statistics (only procedure supported now)

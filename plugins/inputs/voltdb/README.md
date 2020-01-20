@@ -13,7 +13,7 @@ This plugin gathers the following statistics from a VoltDB instance
 ```toml
 [[inputs.voltdb]]
   ## Specify comma-separated connection strings
-  hosts="voltdb://admin:admin@voltdb-1:21212,voltdb-2:21212,voltdb-3"
+  connStrings="voltdb://admin:admin@voltdb-1:21212,voltdb-2:21212,voltdb-3"
   
   ## Specify the procedure to be called
   proc=@Statistics (only procedure supported now)

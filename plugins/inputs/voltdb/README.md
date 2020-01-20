@@ -19,7 +19,7 @@ This plugin gathers the following statistics from a VoltDB instance
   port=21212
   
   ## Specify the procedure to be called
-  proc=@Statistics (only procedure supported now)
+  proc=\@Statistics (only procedure supported now)
   
   ## Specify the delta for the accumulation of the statistics on VoltDB
   ## Check https://docs.voltdb.com/UsingVoltDB/sysprocstatistics.php
@@ -27,6 +27,5 @@ This plugin gathers the following statistics from a VoltDB instance
 ```
 
 ### Metrics
-
-  ## Refer to VoltDB's documentation at https://docs.voltdb.com/UsingVoltDB/sysprocstatistics.php for the metrics returned
+Refer to VoltDB's documentation at https://docs.voltdb.com/UsingVoltDB/sysprocstatistics.php for the metrics returned
   

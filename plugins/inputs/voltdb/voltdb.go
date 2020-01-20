@@ -14,8 +14,7 @@ import (
 )
 
 type VoltDB struct {
-    Hosts string `toml:"hosts"`
-    Port int `toml:port`
+    ConnStrings string `toml:"connStrings"`
     Proc string `toml:"proc"`
     Delta int64 `toml:"delta"`
     
@@ -46,8 +45,12 @@ func (s *VoltDB) Description() string {
 func (s *VoltDB) SampleConfig() string {
     return `
   ## Ask to gather VoltDB statistics
-  host = comma separated hoststring
-  port = for native wire protocol calls (not HTTP)
+  connStrings = comma-separated connection strings
+    // voltdb://localhost
+    // voltdb://localhost:21212
+    // voltdb://user@localhost
+    // voltdb://user:secret@localhost
+    // voltdb://other@localhost?some_param=some_value
   proc = @Statistics (only proc supported now)
   delta = 0 for statistics from beginning of cluster or 1 for delta since last call
 `
@@ -379,7 +382,8 @@ func (s *VoltDB) accIdleTimeStats (acc telegraf.Accumulator, conn *voltdbclient.
 }
 
 func (s *VoltDB) Gather(acc telegraf.Accumulator) error {
-    conn, err := voltdbclient.OpenConn("voltdb://"+s.Hosts+":"+s.Port)
+    conn, err := voltdbclient.OpenConn(s.ConnStrings)
+                                       
 	if err != nil {
 		return err
 	}
